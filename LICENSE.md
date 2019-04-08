@@ -27,8 +27,6 @@ This project is licensed under a custom license, please review the license befor
 ## Usage 
 This license states that you are allowed to use this software for commercial or private use. We permit anyone with a copy of the software to add, remove or modify the given copy. However, you are not allowed to remove or modify the "Authors & Contributors", "Authors", "Contributors" sections in the [README.md](README.md) file. Removing or modifying the license deems your copy unfit for further distribution.
 
-<hr>
-
 ## Distribution
 In order to redistribute any part or the project as whole, you must have written permission by me (Syntasu) via the channels provided in this license.
 
@@ -38,12 +36,8 @@ If given permission to redistribute, please:
 - Include the same license and readme (with credits)
 - Link back to the original repository or other source(s).
 
-<hr>
-
 ## Liability
 Hereby we disclaim any liability of this software or forks of.
-
-<hr>
 
 ## Warranty
 The software is provided as is, we cannot guarentee any warranties of any kind.
