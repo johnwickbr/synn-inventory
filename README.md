@@ -4,8 +4,6 @@ Synn-inventory is a plugin (also known as a resource) for [FiveM](https://fivem.
 
 The inventory offers a user interface for user to interface with, offering an intuitive way to deal with items and management of it. We try offer the users a complete package, along side with an easy API for developer to intergrate their own systems into.
 
-<hr>
-
 ## Features
 - Inventory system
     - Drag and drop
