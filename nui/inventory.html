@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+        <title>Inventory System!</title>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="inventory.css">
+
+    </head>
+
+    <body>
+        <div class="icontainer fill">
+            <div class="row fill">
+                <div class="inventory fill col s5">
+                    <div class="icontainer">
+                        <h5 class="inventory-header">Player Inventory</h5>
+                        <div id="left-inventory" class="inventory-inner row flex">
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+                <div id="middle-inv fill" class="col s2">
+                    <div class="icontainer">
+                        <div id="middle-inventory">
+                            <div>
+                                <h5 id="item-info-header"></h5>
+                            </div>
+                            <div>
+                                <img id="item-info-image"/>
+                            </div>
+                            <div>
+                                <p id="item-info-desc"></p> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventory fill col s5">
+                    <div class="icontainer">
+                        <h5 class="inventory-header">Shop Inventory</h5>
+                        <div id="right-inventory" class="inventory-inner row flex">
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </body> 
+
+    <script src="./dist/inventory-bundle.js"></script>
+</html>

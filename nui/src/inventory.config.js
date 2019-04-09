@@ -1,0 +1,1 @@
+const MAX_INVENTORY_SIZE = 32 + 1;
