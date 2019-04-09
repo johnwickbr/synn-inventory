@@ -1,0 +1,3 @@
+function CreateInventory(name, data) {
+
+}
