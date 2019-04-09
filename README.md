@@ -76,4 +76,4 @@ Please refer the [Contribution Guide](CONTRIBUTING.md) to see how you can contri
 See [LICENSE.md](LICENSE.md) for the terms and conditions.
 
 ## Authors and contributors
-- [**Syntasu**](https://gist.github.com/Syntasu) - Initial work
+- [**Syntasu**](https://github.com/Syntasu) - Initial work
