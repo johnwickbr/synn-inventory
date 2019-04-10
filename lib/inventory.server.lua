@@ -1,7 +1,7 @@
 Inventory.Server = {}
 
-function Inventory.Server.CreateInventory() 
-    --TODO: Implement.
+function Inventory.Server.CreateInventory(name, metadata) 
+    exports["synn-inventory"]:CreateInventory(name, metadata)
 end
 
 function Inventory.Server.RegisterItemDefinition(itemName, itemData) 
