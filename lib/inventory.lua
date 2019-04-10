@@ -18,10 +18,12 @@ Inventory.Client.DropItem = NotImplemented;
 Inventory.Shared = {}
 
 
-function NotImplemented() {
+function NotImplemented() 
     --TODO: Remove.
-    local debug = true;
-    if debug then print("Oof, tried calling an unimplemented function") end
+    local debug = true
+    if debug then 
+        print("Oof, tried calling an unimplemented function") 
+    end
 
     return
-}
+end
