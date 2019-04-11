@@ -1,6 +1,13 @@
 resource_manifest_version "44febabe-d386-4d18-afbe-5e627f4af937"
 
---Setup database and the database adapter.
+-- IMPORT // Import the definitions, don't touch this.
+server_scripts {
+    "lib/inventory.lua",
+    "src/shared/sha256.lua",
+    "src/server/inv.server-def.lua",
+}
+
+-- DATABASE // Configure your database connector stuff, read the wiki first though.
 dependency "mesh_database"
 
 database_files "" {
@@ -13,12 +20,8 @@ server_scripts {
     "src/adapters/database-mdb.lua"
 }
 
--- Core frame
+-- CORE // Inventory system files, probably don't touch this. Unless you are Chuck Norris.
 server_scripts {
-    "lib/inventory.lua", -- Load all the definitions.
-    "src/shared/sha256.lua",
-    "src/server/inv.server-def.lua",
-
     "src/server/inv.server-cache.lua",
     "src/server/inv.server.lua"
 }
