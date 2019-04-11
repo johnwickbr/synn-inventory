@@ -1,3 +1,4 @@
+Inv = {}
 Inv.Database = {
     CreateInventory = {},
     HasInventory = {},
