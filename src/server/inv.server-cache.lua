@@ -5,7 +5,7 @@ function Inv.Cache.HasInventory(hash)
 end
 
 function Inv.Cache.SetInventory(invHash, invMeta, invData) 
-    if Inv.Cache.HasInventory(invData.hash) then
+    if Inv.Cache.HasInventory(invMeta.hash) then
         return
     end
 

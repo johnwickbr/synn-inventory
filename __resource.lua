@@ -8,16 +8,15 @@ server_scripts {
 }
 
 -- DATABASE // Configure your database connector stuff, read the wiki first though.
-dependency "mesh_database"
+dependency "synn-database"
 
 database_files "" {
     "sql/inventory.sql"
 }
 
 server_scripts {
-    "@mesh_lib/def.lua",
-    "@mesh_lib/server/database.lua",
-    "src/adapters/database-mdb.lua"
+    "@synn-database/lib/database.lua",
+    "src/adapters/database-sdb.lua"
 }
 
 -- CORE // Inventory system files, probably don't touch this. Unless you are Chuck Norris.
