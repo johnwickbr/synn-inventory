@@ -1,46 +1,34 @@
-function CreateInventory(name, meta) 
+function CreateInventory(name, metadata) 
     --TODO: Log this, not print.
-    --      Should contain some info on how or what created the inventory.
-    print("^6Attempting to create inventory with name: " .. name .. "^7")
+    print("^6Attempting to create inventory with name: " .. name)
     
     local hash = sha256(name)
-
-    --Make this compatible with the database.
-    if meta.owner == nil then
-        meta.owner = "NULL"
-    end
-
-    --TODO: Friendly user facing asserts (i.e. no stacktrace)
-    --      Technical details should be printed to a log. (server side).
-    assert(type(meta.theme) == "number")
-    assert(type(meta.style) == "number")
-    assert(type(meta.width) == "number")
-    assert(type(meta.height) == "number")
-    assert(type(meta.owner) == "string")
-
-    assert(meta.theme >= 0 and meta.theme < 256)
-    assert(meta.style >= 0 and meta.style < 256)
-    assert(meta.width >= 1 and meta.width < 256)
-    assert(meta.height >= 1 and meta.height < 256)
-
-    assert(meta.owner ~= "")
-    assert(#meta.owner > 0 and #meta.owner <= 64)
-
+    
     --Check if the inventory hash exists...
     if Inv.Cache.HasInventory(hash) then
-        print("^6".. name .. " is already cached!^7")
         return
     end
 
-    if Inv.Database.HasInventory(hash, meta.owner) then 
-        print("^6".. name .. " is already in database!^7")
+    if Inv.Database.HasInventory(hash) then 
         return
     end
 
-    --Create the database and cache the created inventory.
-    Inv.Database.CreateInventory(hash, meta);
-    Inv.Cache.SetInventory(hash, meta);
+    -- Generate inventory data.
 
-    print("^6Created inventory: ".. name .. "^7")
+    --Create the database.
+    Inv.Database.CreateInventory(hash, metadata, {});
+    Inv.Cache.SetInventory(hash, metadata);
+
     return hash
 end
+
+Citizen.CreateThread(function()
+    Citizen.Wait(5000)
+
+    CreateInventory("this_is_an_inventory", {
+        owner = nil,
+        theme = 1,
+        style = 1,
+        dimensions = vector2(4, 4)
+    });
+end)
