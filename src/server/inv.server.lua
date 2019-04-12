@@ -37,22 +37,9 @@ function CreateInventory(name, meta)
         return
     end
 
-    -- Generate inventory data.
-    local data = {}
-
-    local i = 0
-    for x = 1, meta.width do
-        for y = 1, meta.height do 
-            local index = (meta.width * (x-1) + (y-1)) + 1
-            data[index] = { item = "", count = 0 }
-        end
-    end
-
-    local dataDatabase = Inv.Util.ToUnlabledTable(data)
-
     --Create the database and cache the created inventory.
-    Inv.Database.CreateInventory(hash, meta, dataDatabase);
-    Inv.Cache.SetInventory(hash, meta, data);
+    Inv.Database.CreateInventory(hash, meta);
+    Inv.Cache.SetInventory(hash, meta);
 
     print("^6Created inventory: ".. name .. "^7")
     return hash

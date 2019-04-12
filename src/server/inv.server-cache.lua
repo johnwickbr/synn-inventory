@@ -4,7 +4,7 @@ function Inv.Cache.HasInventory(hash)
     return Inv.Cache.GetInventory(hash) ~= ""
 end
 
-function Inv.Cache.SetInventory(invHash, invMeta, invData) 
+function Inv.Cache.SetInventory(invHash, invMeta) 
     if Inv.Cache.HasInventory(invMeta.hash) then
         return
     end
@@ -12,7 +12,7 @@ function Inv.Cache.SetInventory(invHash, invMeta, invData)
     local cacheEntry = {
         hash = invHash,
         meta = invMeta,
-        data = invData
+        data = {}
     }
 
     table.insert(cachedInventories, cacheEntry);

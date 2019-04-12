@@ -15,5 +15,6 @@ CREATE TABLE IF NOT EXISTS `inventory_item` (
     `x` TINYINT(11) UNSIGNED NOT NULL DEFAULT 0, 
     `y` TINYINT(11) UNSIGNED NOT NULL DEFAULT 0, 
     `itemid` INT(11) NOT NULL DEFAULT -1, 
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`uiid`) REFERENCES inventory(`uiid`)
 );
