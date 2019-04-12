@@ -21,6 +21,7 @@ server_scripts {
 
 -- CORE // Inventory system files, probably don't touch this. Unless you are Chuck Norris.
 server_scripts {
+    "src/server/inv.server-util.lua",
     "src/server/inv.server-cache.lua",
     "src/server/inv.server.lua"
 }

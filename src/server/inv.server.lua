@@ -1,5 +1,6 @@
 function CreateInventory(name, meta) 
     --TODO: Log this, not print.
+    --      Should contain some info on how or what created the inventory.
     print("^6Attempting to create inventory with name: " .. name .. "^7")
     
     local hash = sha256(name)
@@ -39,11 +40,20 @@ function CreateInventory(name, meta)
     -- Generate inventory data.
     local data = {}
 
+    local i = 0
+    for x = 1, meta.width do
+        for y = 1, meta.height do 
+            local index = (meta.width * (x-1) + (y-1)) + 1
+            data[index] = { item = "", count = 0 }
+        end
+    end
+
+    local dataDatabase = Inv.Util.ToUnlabledTable(data)
+
     --Create the database and cache the created inventory.
-    Inv.Database.CreateInventory(hash, meta, json.encode(data));
-    Inv.Cache.SetInventory(hash, meta);
+    Inv.Database.CreateInventory(hash, meta, dataDatabase);
+    Inv.Cache.SetInventory(hash, meta, data);
 
     print("^6Created inventory: ".. name .. "^7")
-
     return hash
 end
