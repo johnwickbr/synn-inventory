@@ -6,6 +6,13 @@ function Inv.Database.CreateInventory(hash, meta, data)
     );
 end
 
-function Inv.Database.HasInventory(name) 
-    return false
+function Inv.Database.HasInventory(hash, owner) 
+    local query = "SELECT EXISTS(SELECT 1 FROM `inventory` WHERE uiid=@0 AND owner=@1 LIMIT 1)"
+    local result = Synn.Database.FetchScalar(query, hash, owner)
+    
+    if result == 1 then 
+        return true 
+    else 
+        return false 
+    end
 end
