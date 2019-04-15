@@ -1,7 +1,7 @@
 Inventory.Server = {}
 
-function Inventory.Server.RegisterInventory(invName, invMetadata) 
-    return exports["synn-inventory"]:RegisterInventory(invName, invMetadata)
+function Inventory.Server.RequestInventory(invName, invMetadata) 
+    return exports["synn-inventory"]:RequestInventory(invName, invMetadata)
 end
 
 function Inventory.Server.RegisterItem(itemName, itemData) 
