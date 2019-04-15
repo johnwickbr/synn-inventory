@@ -1,15 +1,16 @@
 Inventory.Server = {}
 
-function Inventory.Server.CreateInventory(name, metadata) 
-    exports["synn-inventory"]:CreateInventory(name, metadata)
+function Inventory.Server.RegisterInventory(invName, invMetadata) 
+    return exports["synn-inventory"]:RegisterInventory(invName, invMetadata)
 end
 
-function Inventory.Server.RegisterItemDefinition(itemName, itemData) 
+function Inventory.Server.RegisterItem(itemName, itemData) 
+    export["synn-inventory"]:RegisterItem(name, data)
     --TODO: Implement.
 end
 
 
-function Inventory.Server.UnregisterItemDefinition(itemName) 
+function Inventory.Server.UnregisterItem(itemName) 
     --TODO: Implement.
 end
 
