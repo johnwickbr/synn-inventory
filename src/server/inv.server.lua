@@ -10,10 +10,10 @@ function RequestInventory(name, metadata, overwrite)
     local valid = Inv.Util.assert_check({
         Inv.Util.assert_string_not_empty(name),
         Inv.Util.assert_string_or_nil(metadata.owner),
-        Inv.Util.assert_uint8(metadata.theme),
-        Inv.Util.assert_uint8(metadata.style),
-        Inv.Util.assert_uint8_non_zero_index(metadata.width),
-        Inv.Util.assert_uint8_non_zero_index(metadata.height)
+        Inv.Util.assert_number(metadata.theme, 0, 255),
+        Inv.Util.assert_number(metadata.style, 0, 255),
+        Inv.Util.assert_number(metadata.width, 1, 255),
+        Inv.Util.assert_number(metadata.height, 1, 255)
     });
 
     if not valid then

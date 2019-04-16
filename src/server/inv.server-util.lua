@@ -13,19 +13,11 @@ function Inv.Util.assert_check(asserts)
     return failed
 end
 
-function Inv.Util.assert_uint8(value)
-    local m = string.format(uint8_message, 0, 255, tostring(value))
+function Inv.Util.assert_number(value, min, max)
+    local m = string.format(uint8_message, min, max, tostring(value))
     _assert(type(value) == "number", m)
-    _assert(value >= 0, m)
-    _assert(value < 256, m)
-end
-
--- NOTE: nzi -> Non-zero indexed, starting at 1 to 255
-function Inv.Util.assert_uint8_non_zero_index(value)
-    local m = string.format(uint8_message, 1, 255, tostring(value))
-    _assert(type(value) == "number", m)
-    _assert(value >= 1, m)
-    _assert(value < 256, m)
+    _assert(value >= min, m)
+    _assert(value <= max, m)
 end
 
 function Inv.Util.assert_string_or_nil(value)
