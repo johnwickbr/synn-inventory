@@ -1,23 +1,3 @@
---[[
-    Returns a interger determining what happened:
-        -1 ->  Input error, see console for more information.
-         0  -> We loaded the inventory or was already loaded.
-         1  -> We created the inventory.
-         2  -> We overwrote the existing inventory.
-
-    Errors: 
-        100 -> Name is nil or empty.
-        101 -> No metadata supplied.
-        102 -> Invalid width.
-        103 -> Invalid height.
-        104 -> Invalid theme.
-        105 -> Invalid style.
-        106 -> Invalid owner.
-        107 -> Wrong owner size.
-        108 -> Wrong transient bit.
-        109 -> Wrong overwrite bit.
-        110 -> Transient inventories cannot have a owner.
-]]
 function RequestInventory(name, metadata, overwrite) 
 
     -- Check if all the inputs are valid.

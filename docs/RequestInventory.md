@@ -51,8 +51,8 @@ The RequestInventory will return an interger indicating what happened inside the
 * `2` -> The requested inventory existed and we loaded it in.
 * `3` -> We overwrote the current metadata _and_ loaded the inventory.
 
-
 Possible errors and their meaning:
+
 * `100` -> The given inventory name was empty or nil.
 * `101` -> The metadata table was not present, empty or nil.
 * `102` -> The given width was nil, below 1 or above 255.
@@ -82,7 +82,7 @@ The result will return either a error code or a status code.
 
 ### Accessibility
 
-Server only.
+This function is accessible from the server only.
 
 To access it, you need these files in your resource manifest:
 
@@ -91,4 +91,8 @@ To access it, you need these files in your resource manifest:
 "@synn-inventory/lib/inventory.server.lua",
 ```
 
-### Security
+<hr>
+
+## Flowchart
+
+![Flowchart of the RequestInventory function](./img/fc_requestinventory.png)
