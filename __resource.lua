@@ -27,5 +27,5 @@ server_scripts {
 }
 
 server_exports {
-    "CreateInventory"
+    "RequestInventory"
 }

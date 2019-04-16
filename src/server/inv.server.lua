@@ -7,7 +7,7 @@
 ]]
 function RequestInventory(name, metadata, overwrite) 
     -- Do sanity checking on the input variables.
-    local valid = Inv.Util.assert_check({
+    local failed, failedIndexes = Inv.Util.assert_check({
         Inv.Util.assert_string_not_empty(name),
         Inv.Util.assert_string_or_nil(metadata.owner),
         Inv.Util.assert_number(metadata.theme, 0, 255),
@@ -15,13 +15,12 @@ function RequestInventory(name, metadata, overwrite)
         Inv.Util.assert_number(metadata.width, 1, 255),
         Inv.Util.assert_number(metadata.height, 1, 255)
     });
-
-    if not valid then
+    if failed then
         return -1
     end
 
     --TODO: Log this, not print.
-    print("^6Attempting to create inventory with name: " .. name)
+    --print("^6Attempting to create inventory with name: " .. name)
     
     local hash = sha256(name)
     
