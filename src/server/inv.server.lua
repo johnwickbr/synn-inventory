@@ -6,30 +6,32 @@
          2  -> We overwrote the existing inventory.
 
     Errors: 
-        1000 -> Name is nil or empty.
-        1001 -> No metadata supplied.
-        1002 -> Invalid width.
-        1003 -> Invalid height.
-        1004 -> Invalid theme.
-        1005 -> Invalid style.
-        1006 -> Invalid owner.
-        1007 -> Wrong owner size.
-        1008 -> Wrong transient bit.
-        1009 -> Wrong overwrite bit.
+        100 -> Name is nil or empty.
+        101 -> No metadata supplied.
+        102 -> Invalid width.
+        103 -> Invalid height.
+        104 -> Invalid theme.
+        105 -> Invalid style.
+        106 -> Invalid owner.
+        107 -> Wrong owner size.
+        108 -> Wrong transient bit.
+        109 -> Wrong overwrite bit.
+        110 -> Transient inventories cannot have a owner.
 ]]
 function RequestInventory(name, metadata, overwrite) 
 
     -- Check if all the inputs are valid.
-    if Inv.Util.StringEmptyOrNull(name) then return 1000 end
-    if Inv.Util.IsNull(metadata) then return 1001 end
-    if not Inv.Util.IsNumber(metadata.width, 1, 255) then return 1002 end
-    if not Inv.Util.IsNumber(metadata.height, 1, 255) then return 1003 end
-    if not Inv.Util.IsNumber(metadata.theme, 0, 255) then return 1004 end
-    if not Inv.Util.IsNumber(metadata.style, 0, 255) then return 1005 end
-    if not Inv.Util.StringOrNull(metadata.owner) then return 1006 end
-    if not Inv.Util.StringIsOfSize(metadata.owner, 1, 255) then return 1007 end
-    if not Inv.Util.IsBool(metadata.transient) then return 1008 end
-    if not Inv.Util.IsBool(overwrite) then return 1009 end
+    if Inv.Util.StringEmptyOrNull(name) then return 100 end
+    if Inv.Util.IsNull(metadata) then return 101 end
+    if not Inv.Util.IsNumber(metadata.width, 1, 255) then return 102 end
+    if not Inv.Util.IsNumber(metadata.height, 1, 255) then return 103 end
+    if not Inv.Util.IsNumber(metadata.theme, 0, 255) then return 104 end
+    if not Inv.Util.IsNumber(metadata.style, 0, 255) then return 105 end
+    if not Inv.Util.StringOrNull(metadata.owner) then return 106 end
+    if not Inv.Util.StringIsOfSize(metadata.owner, 1, 64) then return 107 end
+    if not Inv.Util.IsBool(metadata.transient) then return 108 end
+    if not Inv.Util.IsBool(overwrite) then return 109 end
+    if metadata.transient and metadata.owner ~= nil then return 110 end
 
 
     --TODO: Log this, not print.
