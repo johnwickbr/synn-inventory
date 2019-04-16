@@ -4,20 +4,33 @@
          0  -> We loaded the inventory or was already loaded.
          1  -> We created the inventory.
          2  -> We overwrote the existing inventory.
+
+    Errors: 
+        1000 -> Name is nil or empty.
+        1001 -> No metadata supplied.
+        1002 -> Invalid width.
+        1003 -> Invalid height.
+        1004 -> Invalid theme.
+        1005 -> Invalid style.
+        1006 -> Invalid owner.
+        1007 -> Wrong owner size.
+        1008 -> Wrong transient bit.
+        1009 -> Wrong overwrite bit.
 ]]
 function RequestInventory(name, metadata, overwrite) 
-    -- Do sanity checking on the input variables.
-    local failed, failedIndexes = Inv.Util.assert_check({
-        Inv.Util.assert_string_not_empty(name),
-        Inv.Util.assert_string_or_nil(metadata.owner),
-        Inv.Util.assert_number(metadata.theme, 0, 255),
-        Inv.Util.assert_number(metadata.style, 0, 255),
-        Inv.Util.assert_number(metadata.width, 1, 255),
-        Inv.Util.assert_number(metadata.height, 1, 255)
-    });
-    if failed then
-        return -1
-    end
+
+    -- Check if all the inputs are valid.
+    if Inv.Util.StringEmptyOrNull(name) then return 1000 end
+    if Inv.Util.IsNull(metadata) then return 1001 end
+    if not Inv.Util.IsNumber(metadata.width, 1, 255) then return 1002 end
+    if not Inv.Util.IsNumber(metadata.height, 1, 255) then return 1003 end
+    if not Inv.Util.IsNumber(metadata.theme, 0, 255) then return 1004 end
+    if not Inv.Util.IsNumber(metadata.style, 0, 255) then return 1005 end
+    if not Inv.Util.StringOrNull(metadata.owner) then return 1006 end
+    if not Inv.Util.StringIsOfSize(metadata.owner, 1, 255) then return 1007 end
+    if not Inv.Util.IsBool(metadata.transient) then return 1008 end
+    if not Inv.Util.IsBool(overwrite) then return 1009 end
+
 
     --TODO: Log this, not print.
     --print("^6Attempting to create inventory with name: " .. name)
