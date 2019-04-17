@@ -27,6 +27,6 @@ server_scripts {
 }
 
 server_exports {
-    "RequestInventory",
+    "RegisterInventory",
     "RegisterItem"
 }

@@ -1,12 +1,12 @@
-function RequestInventory(name, metadata, overwrite) 
+function RegisterInventory(name, metadata) 
     
-    local valid, status = Inv.Util.CheckRequestInventoryParams(name, metadata, overwrite)
+    local valid, status = Inv.Util.CheckRegisterInventoryParams(name, metadata)
 
     if not valid then
         return status
     end
 
-    Inv.Util.LogInfo("RequestInventory", string.format("Requested inventory with name %s", name))
+    Inv.Util.LogInfo("RequestInventory", string.format("Registered inventory with name %s", name))
 
     local hash = sha256(name)
 
@@ -20,16 +20,8 @@ function RequestInventory(name, metadata, overwrite)
     end
 
     if Inv.Database.HasInventory(hash) then 
-        if overwrite then 
-            -- Overwrite the inventory meta data.
-            -- Load the inventory data
-            -- Cache the data
-            return 2
-        else
-            --local data = Inv.Database.LoadInventory(hash)
-            --Inv.Cache.SetInventoryData(data)
-            return 0
-        end
+        --Load data
+        return 1
     end
 
     Inv.Database.CreateInventory(hash, metadata)
@@ -48,5 +40,7 @@ function RegisterItem(name, data)
         return 0
     end
 
-
+    if Inv.Database.HasItem(name) then
+        return 1
+    end
 end

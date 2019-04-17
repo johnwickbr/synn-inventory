@@ -21,3 +21,6 @@ end
 function Inv.Database.HasItem(name)
 
 end
+
+function Inv.Database.CreateItem(name, data)
+end
