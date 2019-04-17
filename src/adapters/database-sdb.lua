@@ -17,3 +17,7 @@ function Inv.Database.HasInventory(hash, owner)
         return false 
     end
 end
+
+function Inv.Database.HasItem(name) 
+    
+end
