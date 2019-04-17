@@ -24,6 +24,19 @@ function Inv.Cache.SetInventory(invHash, invMeta)
     table.insert(cachedInventories, cacheEntry);
 end
 
+function Inv.Cache.SetItem(name, data) 
+    if Inv.Cache.HasItem(name) then
+        return 
+    end
+
+    local cacheEntry = {
+        name = name,
+        data = data
+    }
+
+    table.insert(cachedItems, cacheEntry)
+end
+
 function Inv.Cache.GetInventory(hash) 
     for i = 1, #cachedInventories do 
         local inv = cachedInventories[i]

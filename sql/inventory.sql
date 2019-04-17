@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS `item` (
-    `itemid` INT(11) NOT NULL PRIMARY KEY,
+    `itemid` INT(11) AUTO_INCREMENT PRIMARY KEY,
     `display_name` VARCHAR(32) NOT NULL,
-    `display_name_plural` VARCHAR(32) NOT NULL,
+    `display_name_plural` VARCHAR(32),
     `code_name` VARCHAR(32) NOT NULL,
     `description` TEXT,
     `image` VARCHAR(32) NOT NULL,
-    `weight` FLOAT UNSIGNED DEFAULT 1.0,
-    `stacksize` INT(11) UNSIGNED DEFAULT 99
+    `weight` FLOAT UNSIGNED DEFAULT 1.0 NOT NULL,
+    `stacksize` INT(11) UNSIGNED DEFAULT 99 NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `inventory` (
