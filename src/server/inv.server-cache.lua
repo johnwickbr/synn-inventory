@@ -22,6 +22,7 @@ function Inv.Cache.SetInventory(invHash, invMeta)
     }
 
     table.insert(cachedInventories, cacheEntry);
+    Inv.Util.LogVerbose("Cache", string.format("Cached inventory %s with metadata %s", invHash, json.encode(invMeta)))
 end
 
 function Inv.Cache.SetItem(name, data) 
@@ -35,6 +36,7 @@ function Inv.Cache.SetItem(name, data)
     }
 
     table.insert(cachedItems, cacheEntry)
+    Inv.Util.LogVerbose("Cache", string.format("Cached item %s with data %s", name, json.encode(data)))
 end
 
 function Inv.Cache.GetInventory(hash) 

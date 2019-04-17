@@ -29,6 +29,14 @@ function Inv.Util.IsNumber(num, min, max)
     return type(num) == "number" and num >= min and num <= max
 end
 
+function Inv.Util.LogVerbose(func, message)
+    if PRINT then
+        print(string.format("^0[VERBOSE] [%s]: %s^7", func, message))
+    end
+    
+    --TODO: Log
+end
+
 function Inv.Util.LogInfo(func, message)
     if PRINT then
         print(string.format("^5[INFO] [%s]: %s^7", func, message))
@@ -36,7 +44,6 @@ function Inv.Util.LogInfo(func, message)
     
     --TODO: Log
 end
-
 
 function Inv.Util.LogWarning(func, message)
     if PRINT then
