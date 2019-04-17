@@ -30,7 +30,14 @@ function Inv.Database.HasItem(name)
 end
 
 function Inv.Database.LoadItem(name)
-    
+    local query = "SELECT * FROM `item` WHERE code_name=@0 LIMIT 1"
+    local result = Synn.Database.FetchAll(query, name)
+
+    if #result > 0 then
+        return true, result[1]
+    end
+
+    return false, {}
 end
 
 function Inv.Database.CreateItem(name, data)

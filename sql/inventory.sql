@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `item` (
     `itemid` INT(11) AUTO_INCREMENT PRIMARY KEY,
     `display_name` VARCHAR(32) NOT NULL,
     `display_name_plural` VARCHAR(32),
-    `code_name` VARCHAR(32) NOT NULL,
+    `code_name` VARCHAR(32) NOT NULL UNIQUE,
     `description` TEXT,
     `image` VARCHAR(32) NOT NULL,
     `weight` FLOAT UNSIGNED DEFAULT 1.0 NOT NULL,

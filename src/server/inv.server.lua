@@ -43,9 +43,12 @@ function RegisterItem(name, data)
     if Inv.Database.HasItem(name) then
         --TODO: We ideally don't wan to load the item until the server actually needs it.
         --  Otherwise we get 100's (2x) upon starting the server, seems undesireable.
-        local itemData = Inv.Database.LoadItem(name)
-        Inv.Cache.SetItem(name, itemData)
-        return 1
+        local found, itemData = Inv.Database.LoadItem(name)
+
+        if found then
+            Inv.Cache.SetItem(name, itemData)
+            return 1
+        end
     else
         Inv.Database.CreateItem(name, data)
         Inv.Cache.SetItem(name, data)
