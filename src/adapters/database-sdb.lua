@@ -18,6 +18,6 @@ function Inv.Database.HasInventory(hash, owner)
     end
 end
 
-function Inv.Database.HasItem(name) 
-    
+function Inv.Database.HasItem(name)
+
 end

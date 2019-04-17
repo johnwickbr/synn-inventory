@@ -6,9 +6,8 @@ function RequestInventory(name, metadata, overwrite)
         return status
     end
 
-    --TODO: Log this, not print.
-    print("^6Attempting to create inventory with name: " .. name)
-    
+    Inv.Util.LogInfo("RequestInventory", string.format("Requested inventory with name %s", name))
+
     local hash = sha256(name)
 
     if Inv.Cache.HasInventory(hash) then
@@ -38,15 +37,16 @@ function RequestInventory(name, metadata, overwrite)
     return 1
 end
 
-function RegisterItem(name, namePlural, codeName, description, image, weight, stacksize)
-    -- if Inv.Util.StringEmptyOrNull(name) then return 100 end
-    -- if Inv.Util.StringEmptyOrNull(namePlural) then return 101 end
-    -- if Inv.Util.StringEmptyOrNull(codeName) then return 102 end
-    -- if not Inv.Util.StringOrNull(description) then return 103 end
-    -- if not Inv.Util.StringOrNUll(image) then return 104 end
-    -- if not Inv.Util.IsNumber(weight) then return 105 end
-    -- if not Inv.Util.IsFloat(weight) then return 106 end
-    -- if not Inv.Util.IsNumber(stacksize) then return 107 end
+function RegisterItem(name, data)
+    local valid, status = Inv.Util.CheckRegisterItemParams(name, data)
 
-    
-end 
+    if not valid then
+        return status
+    end
+
+    if Inv.Cache.HasItem(name) then
+        return 0
+    end
+
+
+end
